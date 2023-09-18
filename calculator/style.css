@@ -1,0 +1,166 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: 'Helvetica', 'Arial', sans-serif;
+}
+
+:root {
+	font-size: 16px;
+	--fs-900: 2.5rem;
+	--fs-700: 2rem;
+	--fs-500: 1.25rem;
+	--fs-400: 1rem;
+}
+
+.container {
+	height: 100vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.calc {
+	display: flex;
+	flex-direction: column;
+	background-color: lightgray;
+	border: 1px solid black;
+	padding: 1em;
+	width: clamp(200px, 50%, 300px);
+}
+
+.calc__display-section {
+	display: flex;
+	flex: 2;
+	align-items: center;
+	margin-bottom: 1em;
+}
+
+.calc__display {
+	border: 2px solid black;
+	font-size: var(--fs-900);
+	line-height: 1.5;
+	text-align: end;
+	padding: 0 0.15em 0 0;
+	direction: rtl;
+	
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: clip;
+	user-select: none;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+	-moz-appearance: textfield;
+}
+
+.calc__buttons-section {
+	aspect-ratio: 4/5;
+	display: grid;
+	gap: 1%;
+	grid-template-columns: repeat(4, 1fr);
+	grid-template-rows: repeat(5, 1fr);
+	grid-template-areas:
+		"C empty1 empty2 div"
+		"seven eight nine mul"
+		"four five six sub"
+		"one two three add"
+		"empty3 zero dec eql";
+}
+
+.calc__button {
+	display: flex;
+	/* The background */
+	justify-self: center;
+	align-self: center;
+	/* The text inside */
+	justify-content: center;
+	align-items: center;
+
+	width: 100%;
+	aspect-ratio: 1/1;
+	border: 0.05em solid gray;
+	border-radius: 50%;
+	font-size: var(--fs-700);
+	font-weight: 500;
+}
+
+.calc__button-number {
+	background-color: white;
+}
+
+.calc__button-operation {
+	background-color: orange;
+}
+
+#calc__0 {
+	grid-area: zero;
+}
+
+#calc__1 {
+	grid-area: one;
+}
+
+#calc__2 {
+	grid-area: two;
+}
+
+#calc__3 {
+	grid-area: three;
+}
+
+#calc__4 {
+	grid-area: four;
+}
+
+#calc__5 {
+	grid-area: five;
+}
+
+#calc__6 {
+	grid-area: six;
+}
+
+#calc__7 {
+	grid-area: seven;
+}
+
+#calc__8 {
+	grid-area: eight;
+}
+
+#calc__9 {
+	grid-area: nine;
+}
+
+#calc__dec {
+	grid-area: dec;
+}
+
+#calc__add {
+	grid-area: add;
+}
+
+#calc__sub {
+	grid-area: sub;
+}
+
+#calc__mul {
+	grid-area: mul;
+}
+
+#calc__div {
+	grid-area: div;
+}
+
+#calc__eql {
+	grid-area: eql;
+}

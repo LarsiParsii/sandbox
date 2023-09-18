@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Calculator app</title>
+	<link rel="icon" href="img/favicon.png" type="image/x-icon" />
+	<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+	<div class="container">
+		<section class="calc">
+			<!-- Display Section -->
+			<div class="calc__display-section">
+				<input class="calc__display" type="number" disabled value="01234567890123456789"/>
+			</div>
+
+			<!-- Buttons Section -->
+			<section class="calc__buttons-section">
+				<!-- Number Buttons -->
+				<button type="button" id="calc__0" class="calc__button-number calc__button">0</button>
+				<button type="button" id="calc__1" class="calc__button-number calc__button">1</button>
+				<button type="button" id="calc__2" class="calc__button-number calc__button">2</button>
+				<button type="button" id="calc__3" class="calc__button-number calc__button">3</button>
+				<button type="button" id="calc__4" class="calc__button-number calc__button">4</button>
+				<button type="button" id="calc__5" class="calc__button-number calc__button">5</button>
+				<button type="button" id="calc__6" class="calc__button-number calc__button">6</button>
+				<button type="button" id="calc__7" class="calc__button-number calc__button">7</button>
+				<button type="button" id="calc__8" class="calc__button-number calc__button">8</button>
+				<button type="button" id="calc__9" class="calc__button-number calc__button">9</button>
+				<button type="button" id="calc__dec" class="calc__button-number calc__button">·</button>
+
+				<!-- Operation Buttons -->
+				<button type="button" id="calc__add" class="calc__button-operation calc__button">+</button>
+				<button type="button" id="calc__sub" class="calc__button-operation calc__button">-</button>
+				<button type="button" id="calc__mul" class="calc__button-operation calc__button">*</button>
+				<button type="button" id="calc__div" class="calc__button-operation calc__button">/</button>
+				<button type="button" id="calc__eql" class="calc__button-operation calc__button">=</button>
+
+				<!-- Control Buttons -->
+				<button type="button" id="calc__clr" class="calc__button-control calc__button">C</button>
+			</section>
+		</section>
+	</div>
+</body>
+
+</html>
