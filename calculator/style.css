@@ -1,3 +1,23 @@
+@font-face {
+	font-family: digital;
+	src: url(fonts/digital.ttf);
+}
+
+@font-face {
+	font-family: digital-mono;
+	src: url(fonts/digital-mono.ttf);
+}
+
+@font-face {
+	font-family: digital-italic;
+	src: url(fonts/digital-italic.ttf);
+}
+
+@font-face {
+	font-family: digital-mono-italic;
+	src: url(fonts/digital-mono-italic.ttf);
+}
+
 * {
 	margin: 0;
 	padding: 0;
@@ -7,6 +27,7 @@
 
 :root {
 	font-size: 16px;
+	--fs-display: 3.5rem;
 	--fs-900: 2.5rem;
 	--fs-700: 2rem;
 	--fs-500: 1.25rem;
@@ -24,7 +45,8 @@
 	display: flex;
 	flex-direction: column;
 	background-color: lightgray;
-	border: 1px solid black;
+	border: 2px solid black;
+	border-radius: 25px;
 	padding: 1em;
 	width: clamp(200px, 50%, 300px);
 }
@@ -32,30 +54,22 @@
 .calc__display-section {
 	display: flex;
 	flex: 2;
-	align-items: center;
 	margin-bottom: 1em;
 }
 
 .calc__display {
+	font-family: 'digital-mono', 'sans-serif';
+	font-size: var(--fs-display);
+	background-color: white;
 	border: 2px solid black;
-	font-size: var(--fs-900);
-	line-height: 1.5;
-	padding: 0 0.15em 0 0;
+	width: 100%;
+	height: 1em;
+	padding: 0.1em;
 	
+	display: flex;
 	overflow: hidden;
-	overflow
-}
-
-/* Chrome, Safari, Edge, Opera */
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-	-webkit-appearance: none;
-	margin: 0;
-}
-
-/* Firefox */
-input[type=number] {
-	-moz-appearance: textfield;
+	align-items: center;
+	justify-content: right;
 }
 
 .calc__buttons-section {
@@ -65,36 +79,53 @@ input[type=number] {
 	grid-template-columns: repeat(4, 1fr);
 	grid-template-rows: repeat(5, 1fr);
 	grid-template-areas:
-		"C empty1 empty2 div"
+		"empty3 empty1 empty2 div"
 		"seven eight nine mul"
 		"four five six sub"
 		"one two three add"
-		"empty3 zero dec eql";
+		"clr zero dec eql";
 }
 
 .calc__button {
 	display: flex;
-	/* The background */
-	justify-self: center;
+	/* Button box */
 	align-self: center;
-	/* The text inside */
-	justify-content: center;
+	justify-self: center;
+	/* Button content */
 	align-items: center;
-
-	width: 100%;
+	justify-content: center;
+	
+	width: 93%;
 	aspect-ratio: 1/1;
-	border: 0.05em solid gray;
 	border-radius: 50%;
 	font-size: var(--fs-700);
 	font-weight: 500;
+	border: 3px solid gray;
+	box-shadow: 0.025em 0.025em;
+	transition: scale 0.2s;
+}
+
+.calc__button:active {
+	transform: scale(0.98);
 }
 
 .calc__button-number {
 	background-color: white;
+	font-weight: 500;
+}
+
+.calc__button-dec {
+	background-color: white;
+	font-weight: 500;
 }
 
 .calc__button-operation {
 	background-color: orange;
+}
+
+.calc__button-control {
+	background-color: slategrey;
+	color: whitesmoke;
 }
 
 #calc__0 {
@@ -159,4 +190,20 @@ input[type=number] {
 
 #calc__eql {
 	grid-area: eql;
+}
+
+#calc__clr {
+	grid-area: clr;
+}
+
+#calc__empty1 {
+	grid-area: empty1;
+}
+
+#calc__empty2 {
+	grid-area: empty2;
+}
+
+#calc__empty3 {
+	grid-area: empty3;
 }
