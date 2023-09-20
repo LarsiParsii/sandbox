@@ -114,11 +114,6 @@
 	font-weight: 500;
 }
 
-.calc__button-dec {
-	background-color: white;
-	font-weight: 500;
-}
-
 .calc__button-operation {
 	background-color: orange;
 }
