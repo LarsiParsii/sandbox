@@ -19,25 +19,28 @@ class Calculator {
   }
 
   selectOperator(operation) {
-    if (this.currentOperand === '') return;
     if (this.previousOperand !== '') {
       this.compute();
     }
     this.operation = operation;
-    this.previousOperand = this.currentOperand;
+
+    if (this.currentOperand !== '') {
+      this.previousOperand = this.currentOperand;
+    }
     this.currentOperand = '';
   }
 
   updateDisplay() {
-    if (this.operation != null) {
+    if (this.operation != null && this.currentOperand !== '') {
       this.displayField.innerText = `${this.operation}${this.currentOperand}`;
-    } else {
+    } else if (this.currentOperand !== '') {
       this.displayField.innerText = this.currentOperand;
     }
   }
 
   compute() {
     let result;
+    if (this.operation === '-' && this.previousOperand === '') this.previousOperand = '0';
     const current = parseFloat(this.currentOperand);
     const prev = parseFloat(this.previousOperand);
     if (isNaN(current) || isNaN(prev)) return;
@@ -60,7 +63,7 @@ class Calculator {
         return;
     }
 
-    this.currentOperand = result;
+    this.currentOperand = result.toFixed(3);
     this.operation = undefined;
     this.previousOperand = '';
   }
@@ -78,7 +81,6 @@ num_buttons.forEach(button => {
   button.addEventListener('click', () => {
     calculator.appendNumber(button.innerText);
     calculator.updateDisplay();
-    //console.log(`Button ${button.innerText} pressed.`);
   })
 })
 
@@ -98,3 +100,23 @@ eql_button.addEventListener('click', () => {
   calculator.compute();
   calculator.updateDisplay();
 })
+
+// Add event listeners for keyboard input
+document.addEventListener('keydown', event => {
+  if (event.key >= 0 && event.key <= 9) {
+    calculator.appendNumber(event.key);
+    calculator.updateDisplay();
+  } else if (event.key === '.') {
+    calculator.appendNumber(event.key);
+    calculator.updateDisplay();
+  } else if (event.key === '+' || event.key === '-' || event.key === '*' || event.key === '/') {
+    calculator.selectOperator(event.key);
+    calculator.updateDisplay();
+  } else if (event.key === 'Enter') {
+    calculator.compute();
+    calculator.updateDisplay();
+  } else if (event.key === 'Escape') {
+    calculator.clear();
+    calculator.updateDisplay();
+  }
+});
